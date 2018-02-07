@@ -1,4 +1,4 @@
-package.name <- "visualHotspots"
+package.name <- "roadHotspots"
 package.dir <- paste0("~/DADOS/BRUNO/MyPackges/",package.name)
 setwd(package.dir)
 ### --- Use Roxygenise to generate .RD files from my comments

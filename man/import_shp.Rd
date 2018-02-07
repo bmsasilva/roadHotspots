@@ -7,13 +7,16 @@
 import_shp(path)
 }
 \arguments{
-\item{path}{A full filepath of a .shp file}
+\item{path}{The full path of a .shp file}
 }
 \value{
 List with two elements: dsn and layer name
 }
 \description{
 Creates a valid dsn and layer name from a .shp filepath
+}
+\examples{
+import_shp("home/user/data/shapefile.shp")
 }
 \author{
 Bruno Silva
