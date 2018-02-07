@@ -1,0 +1,20 @@
+.import_shp <- function(path){
+  aux <- as.character(path) %>%
+    strsplit(., "\\.") %>%
+    .[[1]] %>%
+    .[1]
+  
+  dsn <- strsplit(aux,"/") %>%
+    .[[1]] %>%
+    .[-c(length(.))] %>%
+    paste(., collapse = "/")
+  
+  layer <- strsplit(aux,"/") %>%
+    .[[1]] %>%
+    .[length(.)]
+  
+  list(dsn = dsn, layer = layer)
+}
+
+
+
