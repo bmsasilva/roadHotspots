@@ -2,12 +2,15 @@
 % Please edit documentation in R/run_app.R
 \name{run_app}
 \alias{run_app}
-\title{Shiny app to visualize hotspots}
+\title{svsvsvsInteractive visualization of hotspots}
 \usage{
 run_app()
 }
+\value{
+Nothing
+}
 \description{
-Shiny app to visualize hotspots
+Interactive visualization of hotspots
 }
 \author{
 Bruno Silva
