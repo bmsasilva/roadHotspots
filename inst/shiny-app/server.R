@@ -1,10 +1,3 @@
-library("leaflet")
-library("shiny")
-library("shinyFiles")
-library("raster")
-library("rgdal")
-library("maptools")
-################################################################################
 shinyServer(function(input, output, session) {
 
   shinyFiles::shinyFileChoose(
@@ -32,11 +25,11 @@ shinyServer(function(input, output, session) {
 
     # Importing lines feature
     lines <- rgdal::readOGR(dsn = shp$dsn, layer = shp$layer)
-    projection(lines) <- sp::CRS("+init=epsg:32629")
+    proj <- projection(lines)
 
     ## Importing mortality points and converting to spatial points
     spoints <- sp::SpatialPoints(cbind(samples[, 2], samples[, 3]))
-    projection(spoints) <- sp::CRS("+init=epsg:32629")
+    projection(spoints) <- sp::CRS(proj)
 
     # Snap points to road segments
     spoints <- maptools::snapPointsToLines(spoints, lines,
@@ -44,13 +37,14 @@ shinyServer(function(input, output, session) {
 
     # Obtain kernel
     dens <- MASS::kde2d(coordinates(spoints)[, 1], coordinates(spoints)[, 2],
-                        lims = c(565000, 620000, 4265000, 4305000),
-                        n = c(550, 400),
+                        lims = c(raster::xmin(spoints), raster::xmax(spoints), 
+                                 raster::ymin(spoints), raster::ymax(spoints)),
+                        n = 500,
                         h = as.numeric(input$bandw))
-
+    
     # Convert to raster
     bias <- raster::raster(dens)
-    projection(bias) <- sp::CRS("+init=epsg:32629")
+    projection(bias) <- sp::CRS(proj)
 
     x <- raster::getValues(bias) / max(raster::getValues(bias))
     bias <- raster::setValues(bias, x)
