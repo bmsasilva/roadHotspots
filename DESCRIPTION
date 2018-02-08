@@ -17,5 +17,8 @@ Imports:
     raster,
     rgdal,
     maptools,
-    magrittr
+    magrittr,
+    MASS,
+    sp
 RoxygenNote: 5.0.1
+Suggests: testthat

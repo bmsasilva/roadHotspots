@@ -10,10 +10,10 @@
 import_shp <- function(path){
   aux <- strsplit(as.character(path), "\\.")[[1]][1]
 
-  dsn <- strsplit(aux, "/")[[1]]
+  dsn <- strsplit(aux, "/|[\\]")[[1]]
   dsn <- paste(dsn[-c(length(dsn))], collapse = "/")
 
-  layer <- strsplit(aux, "/")[[1]]
+  layer <- strsplit(aux, "/|[\\]")[[1]]
   layer <- layer[length(layer)]
 
   list(dsn = dsn, layer = layer)

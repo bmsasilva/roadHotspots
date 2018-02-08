@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_app.R
 \name{run_app}
 \alias{run_app}
-\title{svsvsvsInteractive visualization of hotspots}
+\title{Interactive visualization of hotspots}
 \usage{
 run_app()
 }
@@ -11,6 +11,9 @@ Nothing
 }
 \description{
 Interactive visualization of hotspots
+}
+\examples{
+run_app()
 }
 \author{
 Bruno Silva
