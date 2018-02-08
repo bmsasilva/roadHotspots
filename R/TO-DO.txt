@@ -1,5 +1,0 @@
-- Read CRS coordinates from shapefile - DONE
-- Change coordinate limits for kernel function - DONE
-- Change UI
-- Create buffer 100m around roads to clip kernel
-- Insert field for type of map (roads or aerial)
