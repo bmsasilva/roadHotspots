@@ -1,0 +1,9 @@
+- Read CRS coordinates from shapefile - DONE
+- Change coordinate limits for kernel function - DONE
+- Add automated testing - DONE
+- Convert kernel script into a function - DONE
+- Change UI
+- Create buffer 100m around roads to clip kernel
+- Insert field for type of map (roads or aerial)
+- Resolve package dependencies not loading
+

@@ -19,49 +19,7 @@ shinyServer(function(input, output, session) {
     })
 
   shape_dens <- shiny::reactive({
-    shp <- import_shp(roads_path()$datapath)
-    csv <- as.character(count_path()$datapath)
-    samples <- utils::read.csv(csv, header = TRUE)
-
-    # Importing lines feature
-    lines <- rgdal::readOGR(dsn = shp$dsn, layer = shp$layer)
-    proj <- projection(lines)
-
-    ## Importing mortality points and converting to spatial points
-    spoints <- sp::SpatialPoints(cbind(samples[, 2], samples[, 3]))
-    projection(spoints) <- sp::CRS(proj)
-
-    # Snap points to road segments
-    spoints <- maptools::snapPointsToLines(spoints, lines,
-                                 maxDist = NA, withAttrs = FALSE, idField = NA)
-
-    # Obtain kernel
-    dens <- MASS::kde2d(coordinates(spoints)[, 1], coordinates(spoints)[, 2],
-                        lims = c(raster::xmin(spoints), raster::xmax(spoints), 
-                                 raster::ymin(spoints), raster::ymax(spoints)),
-                        n = 500,
-                        h = as.numeric(input$bandw))
-    
-    # Convert to raster
-    bias <- raster::raster(dens)
-    projection(bias) <- sp::CRS(proj)
-
-    x <- raster::getValues(bias) / max(raster::getValues(bias))
-    bias <- raster::setValues(bias, x)
-
-    x <- ifelse(raster::getValues(bias) < 0.25, NA, raster::getValues(bias))
-
-    x <- ifelse(raster::getValues(bias) < 0.25, NA,
-                ifelse(raster::getValues(bias) <= 0.5, 1,
-                       ifelse(raster::getValues(bias) > 0.5 &
-                                raster::getValues(bias) <= 0.75, 2,
-                              3)))
-
-    bias <- raster::setValues(bias, x)
-
-    bias <- raster::rasterToPolygons(bias,
-                             fun = NULL, n = 4, na.rm = TRUE,
-                             digits = 12, dissolve = TRUE)
+road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
   })
 
   output$download_kernel <- shiny::downloadHandler(
