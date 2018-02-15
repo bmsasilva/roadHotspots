@@ -12,9 +12,6 @@ Nothing
 \description{
 Interactive visualization of hotspots
 }
-\examples{
-run_app()
-}
 \author{
 Bruno Silva
 }

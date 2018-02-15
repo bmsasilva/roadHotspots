@@ -2,16 +2,16 @@
 % Please edit documentation in R/road_kernel.R
 \name{road_kernel}
 \alias{road_kernel}
-\title{Title}
+\title{Creates a gaussian density kernel}
 \usage{
 road_kernel(count_path, roads_path, bandw = 500)
 }
 \arguments{
-\item{count_path}{}
+\item{count_path}{Path for the .csv file with the location of the observations}
 
-\item{roads_path}{}
+\item{roads_path}{Path for the .shp file with the roads}
 
-\item{bandw}{}
+\item{bandw}{Vector of bandwidths for x and y directions. A scalar value will be taken to apply to both directions.}
 }
 \value{
 string
@@ -19,7 +19,7 @@ string
 \description{
 Title
 }
-\examples{
-not run
+\author{
+Bruno Silva
 }
 

@@ -2,8 +2,9 @@
 - Change coordinate limits for kernel function - DONE
 - Add automated testing - DONE
 - Convert kernel script into a function - DONE
-- Change UI
+- Change UI to dashboard
 - Create buffer 100m around roads to clip kernel
 - Insert field for type of map (roads or aerial)
 - Resolve package dependencies not loading
+- Replace error messages before files have been selected
 

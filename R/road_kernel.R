@@ -1,14 +1,13 @@
 #' Title
-#'
-#' @param count_path 
-#' @param roads_path 
-#' @param bandw 
-#'
-#' @return string
 #' @export
-#'
-#' @examples 
-#' not run
+#' @title Creates a gaussian density kernel
+#' @name road_kernel
+#' @param count_path Path for the .csv file with the location of the observations
+#' @param roads_path Path for the .shp file with the roads
+#' @param bandw Vector of bandwidths for x and y directions. A scalar value will be taken to apply to both directions.
+#' @return string
+#' @author Bruno Silva
+#' @import maptools
 road_kernel <- function(count_path, roads_path, bandw = 500) {
   shp <- import_shp(roads_path)
   csv <- as.character(count_path)
