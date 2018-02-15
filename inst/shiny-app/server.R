@@ -19,7 +19,7 @@ shiny::shinyServer(function(input, output, session) {
     })
 
   shape_dens <- shiny::reactive({
-    road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
+    road_kernel(count_path()$datapath, roads_path()$datapath, 500)
   })
 
   output$download_kernel <- shiny::downloadHandler(
@@ -62,7 +62,8 @@ shiny::shinyServer(function(input, output, session) {
     bias <- sp::spTransform(shape_dens(),
                         CRS("+proj=longlat +datum=WGS84 +no_defs"))
     leaflet::leaflet() %>%
-      leaflet::addTiles() %>%
+      leaflet::addProviderTiles(input$map_type)%>%
+     # leaflet::addTiles() %>%
       leaflet::addPolygons(data = bias, group = "layer",
                   color = c("darkgreen", "yellow", "red"),
                   stroke = FALSE, fillOpacity = 0.75)

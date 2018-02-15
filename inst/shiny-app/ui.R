@@ -18,13 +18,14 @@ shiny::shinyUI(
                                                    "Events .csv", FALSE
                       ))),
       shiny::br(),
-      shiny::selectInput(
-        "bandw",
-        NULL,
-        choices = c("Bandwidth 500m" = 500,
-                    "Bandwidth 1000m" = 1000),
-        selected =  500
-      ),
+      shiny::br(),
+      # shiny::selectInput(
+      #   "bandw",
+      #   NULL,
+      #   choices = c("Bandwidth 500m" = 500,
+      #               "Bandwidth 1000m" = 1000),
+      #   selected =  500
+      # ),
       
       shinydashboard::sidebarMenu(
         shinydashboard::menuItem("Total", tabName = "Total", icon = icon("th")) #,
@@ -47,19 +48,19 @@ shiny::shinyUI(
                                                   selected =  500
                                                 )),
                                   shiny::column(3,
-                                                shiny::selectInput("meteo", 
-                                                                    "Escolher variável meteorológica", 
-                                                                    choices = c('Temperatura'='Temp',
-                                                                                'Precipitação' = 'Pluv'), 
-                                                                    selected = 'Temp'
+                                                shiny::selectInput(
+                                                  "map_type",
+                                                  NULL,
+                                                  choices = c("Map" = "OpenStreetMap.Mapnik",
+                                                              "Aerial" = "Esri.WorldImagery",
+                                                              "Hybrid" = "HERE.hybridDay",
+                                                              "Topography" = "Esri.WorldTopoMap"),
+                                                  selected =  "OpenStreetMap.Mapnik"
                                                 ))
-                                  
                                 ), # final Fluidrow
                                 shiny::fluidRow(leaflet::leafletOutput("mymap", height = 600))
                                 #fluidRow(dataTableOutput("mortPlot")) # Para despistar erros no mortPlot
-                                
         ),#final tabItem Total
-        
         
         shinydashboard::tabItem(tabName = "Especies",
                                 #  h2("Tabela"),
