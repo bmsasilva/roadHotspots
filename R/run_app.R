@@ -4,8 +4,6 @@
 #' @name run_app
 #' @return Nothing
 #' @author Bruno Silva
-#' @examples
-#' run_app()
 run_app <- function() {
   app_dir <- system.file("shiny-app", package = "roadHotspots")
   if (app_dir == "") {

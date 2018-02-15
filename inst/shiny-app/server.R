@@ -1,25 +1,25 @@
-shinyServer(function(input, output, session) {
+shiny::shinyServer(function(input, output, session) {
 
   shinyFiles::shinyFileChoose(
     input, "file_count", session = session,
-    roots = getVolumes(), filetypes = c("csv")
+    roots = shinyFiles::getVolumes(), filetypes = c("csv")
   )
 
   shinyFiles::shinyFileChoose(
     input, "file_roads", session = session,
-    roots = getVolumes(), filetypes = c("shp")
+    roots = shinyFiles::getVolumes(), filetypes = c("shp")
   )
 
   count_path <- shiny::reactive({
-    parseFilePaths(getVolumes(), input$file_count)
+    shinyFiles::parseFilePaths(shinyFiles::getVolumes(), input$file_count)
   })
 
   roads_path <- shiny::reactive({
-    parseFilePaths(getVolumes(), input$file_roads)
+    shinyFiles::parseFilePaths(shinyFiles::getVolumes(), input$file_roads)
     })
 
   shape_dens <- shiny::reactive({
-road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
+    road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
   })
 
   output$download_kernel <- shiny::downloadHandler(
