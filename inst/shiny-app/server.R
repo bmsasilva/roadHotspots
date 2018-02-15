@@ -19,6 +19,12 @@ shiny::shinyServer(function(input, output, session) {
     })
 
   shape_dens <- shiny::reactive({
+    validate(
+      need(roads_path()$datapath != "",
+           "Please select a road shapefile"),
+      need(count_path()$datapath != "",
+           "Please select a file with observed events")
+      )
     road_kernel(count_path()$datapath, roads_path()$datapath, 500)
   })
 
