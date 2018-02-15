@@ -21,13 +21,19 @@ shiny::shinyServer(function(input, output, session) {
   shape_dens <- shiny::reactive({
     validate(
       need(roads_path()$datapath != "",
-           "Please select a road shapefile"),
+           "Please select a shapefile with roads"),
       need(count_path()$datapath != "",
            "Please select a file with observed events")
       )
     road_kernel(count_path()$datapath, roads_path()$datapath, 500)
   })
-
+  
+  bound_box <- shiny::reactive({
+    aux <- sp::spTransform(shape_dens(),
+                            CRS("+proj=longlat +datum=WGS84 +no_defs"))
+    
+  })
+  
   output$download_kernel <- shiny::downloadHandler(
 
     # This function returns a string which tells the client
