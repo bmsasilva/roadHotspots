@@ -26,9 +26,11 @@ shiny::shinyUI(
       #               "Bandwidth 1000m" = 1000),
       #   selected =  500
       # ),
-      
+
       shinydashboard::sidebarMenu(
-        shinydashboard::menuItem("Total", tabName = "Total", icon = icon("th")) #,
+        shinydashboard::menuItem("Total", 
+                                 tabName = "Total",
+                                 icon = icon("th")) #,
         #  menuItem("Espécies", tabName = "Especies", icon = icon("th")) #,
         # menuItem("Mapa", tabName = "Mapa", icon = icon("th"))
       )
@@ -51,11 +53,10 @@ shiny::shinyUI(
                                                 shiny::selectInput(
                                                   "map_type",
                                                   NULL,
-                                                  choices = c("Map" = "OpenStreetMap.Mapnik",
+                                                  choices = c("Map" = "OpenStreetMap.BlackAndWhite",
                                                               "Aerial" = "Esri.WorldImagery",
-                                                              "Hybrid" = "HERE.hybridDay",
                                                               "Topography" = "Esri.WorldTopoMap"),
-                                                  selected =  "OpenStreetMap.Mapnik"
+                                                  selected =  "OpenStreetMap.BlackAndWhite"
                                                 ))
                                 ), # final Fluidrow
                                 shiny::fluidRow(leaflet::leafletOutput("mymap", height = 600))

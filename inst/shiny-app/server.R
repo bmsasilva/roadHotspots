@@ -25,15 +25,15 @@ shiny::shinyServer(function(input, output, session) {
       need(count_path()$datapath != "",
            "Please select a file with observed events")
       )
-    road_kernel(count_path()$datapath, roads_path()$datapath, 500)
+    road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
   })
-  
+
   bound_box <- shiny::reactive({
     aux <- sp::spTransform(shape_dens(),
                             CRS("+proj=longlat +datum=WGS84 +no_defs"))
-    
+
   })
-  
+
   output$download_kernel <- shiny::downloadHandler(
 
     # This function returns a string which tells the client
@@ -74,10 +74,11 @@ shiny::shinyServer(function(input, output, session) {
     bias <- sp::spTransform(shape_dens(),
                         CRS("+proj=longlat +datum=WGS84 +no_defs"))
     leaflet::leaflet() %>%
-      leaflet::addProviderTiles(input$map_type)%>%
+      leaflet::addProviderTiles(input$map_type) %>%
      # leaflet::addTiles() %>%
       leaflet::addPolygons(data = bias, group = "layer",
                   color = c("darkgreen", "yellow", "red"),
-                  stroke = FALSE, fillOpacity = 0.75)
+                  stroke = FALSE, fillOpacity = 0.75) 
+    
     })
  })
