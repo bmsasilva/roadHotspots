@@ -17,7 +17,8 @@ Imports:
     raster,
     rgdal,
     MASS,
-    sp
+    sp,
+    rgeos
 Depends: maptools
 RoxygenNote: 5.0.1
 Suggests: testthat
