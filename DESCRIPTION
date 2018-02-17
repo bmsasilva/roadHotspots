@@ -16,9 +16,9 @@ Imports:
     shinyFiles,
     raster,
     rgdal,
-    maptools,
-    magrittr,
     MASS,
-    sp
+    sp,
+    rgeos
+Depends: maptools
 RoxygenNote: 5.0.1
 Suggests: testthat

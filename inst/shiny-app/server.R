@@ -1,25 +1,37 @@
-shinyServer(function(input, output, session) {
+shiny::shinyServer(function(input, output, session) {
 
   shinyFiles::shinyFileChoose(
     input, "file_count", session = session,
-    roots = getVolumes(), filetypes = c("csv")
+    roots = shinyFiles::getVolumes(), filetypes = c("csv")
   )
 
   shinyFiles::shinyFileChoose(
     input, "file_roads", session = session,
-    roots = getVolumes(), filetypes = c("shp")
+    roots = shinyFiles::getVolumes(), filetypes = c("shp")
   )
 
   count_path <- shiny::reactive({
-    parseFilePaths(getVolumes(), input$file_count)
+    shinyFiles::parseFilePaths(shinyFiles::getVolumes(), input$file_count)
   })
 
   roads_path <- shiny::reactive({
-    parseFilePaths(getVolumes(), input$file_roads)
+    shinyFiles::parseFilePaths(shinyFiles::getVolumes(), input$file_roads)
     })
 
   shape_dens <- shiny::reactive({
-road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
+    validate(
+      need(roads_path()$datapath != "",
+           "Please select a shapefile with roads"),
+      need(count_path()$datapath != "",
+           "Please select a file with observed events")
+      )
+    road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
+  })
+
+  bound_box <- shiny::reactive({
+    aux <- sp::spTransform(shape_dens(),
+                            CRS("+proj=longlat +datum=WGS84 +no_defs"))
+
   })
 
   output$download_kernel <- shiny::downloadHandler(
@@ -62,9 +74,11 @@ road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
     bias <- sp::spTransform(shape_dens(),
                         CRS("+proj=longlat +datum=WGS84 +no_defs"))
     leaflet::leaflet() %>%
-      leaflet::addTiles() %>%
+      leaflet::addProviderTiles(input$map_type) %>%
+     # leaflet::addTiles() %>%
       leaflet::addPolygons(data = bias, group = "layer",
                   color = c("darkgreen", "yellow", "red"),
-                  stroke = FALSE, fillOpacity = 0.75)
+                  stroke = FALSE, fillOpacity = 0.75) 
+    
     })
  })

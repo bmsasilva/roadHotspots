@@ -2,8 +2,10 @@
 - Change coordinate limits for kernel function - DONE
 - Add automated testing - DONE
 - Convert kernel script into a function - DONE
-- Change UI
-- Create buffer 100m around roads to clip kernel
-- Insert field for type of map (roads or aerial)
-- Resolve package dependencies not loading
-
+- Change UI to dashboard - DONE
+- Insert field for type of map - DONE
+- Resolve package dependencies not loading - DONE
+- Replace error messages before files have been selected - DONE
+- Create buffer around roads to clip kernel - DONE
+- Create function to clip shapes and keeping the dataframe - DONE
+- Create function to compute Malo method
