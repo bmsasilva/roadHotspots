@@ -8,7 +8,7 @@
 #' @return Clipped density kernel to the roads
 #' @author Bruno Silva
 road_clip <- function(kernel_shape, road_shape, buf_width){
-  buf_roads <- rgeos::gBuffer(road_shape)
+  buf_roads <- rgeos::gBuffer(road_shape, width = buf_width)
   new_kernel <- rgeos::gIntersection(kernel_shape, buf_roads, byid=TRUE)
   row.names(new_kernel) <- gsub(" buffer", "", row.names(new_kernel))
   keep <- row.names(new_kernel)

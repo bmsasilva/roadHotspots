@@ -16,8 +16,6 @@ road_kernel <- function(count_path, roads_path, bandw = 500) {
   lines <- rgdal::readOGR(dsn = shp$dsn, layer = shp$layer)
   proj <- raster::projection(lines)
  
-  
-  
   spoints <- sp::SpatialPoints(cbind(samples[, 2], samples[, 3]))
   raster::projection(spoints) <- sp::CRS(proj)
   
