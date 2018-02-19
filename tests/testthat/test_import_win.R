@@ -18,3 +18,8 @@ test_that("import_shp returns two elements of length=1", {
   expect_equal(length(win$dsn), 1)
   expect_equal(length(win$layer), 1)
 })
+
+test_that("import_shp returns the correct strings", {
+  expect_equal(print(win$dsn), "c:/home/user")
+  expect_equal(print(win$layer), "file")
+})
