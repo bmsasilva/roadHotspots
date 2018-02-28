@@ -1,5 +1,5 @@
 #' lines2df
-#' @name Lines2df
+#' @name lines2df
 #' @description This function extracts the coordinates of the start and end points of each segment of a Spatial Line and returns a dataframe.
 #' @param spatial_line An object class SpatialLinesDataFrame from the package sp.
 #' @usage lines2df(spatial_line)

@@ -8,13 +8,6 @@
 #' @author Duccio Aiazzi
 #' @references http://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point?newreg=468f66d7274f449b8ecf3fa4e63f41fe
 #' @references http://tutorial.math.lamar.edu/Classes/CalcII/Vectors_Basics.aspx
-#' @examples library("sp", "sptools")
-#' c1 = cbind(c(0,2,5,7), c(0,2,3,3))
-#' l1 = Line(c1)
-#' sl = list(Lines(list(l1), ID = 1))
-#' SP = SpatialLines(sl)
-#' plot(SP)
-#' SPs = splitLines(SP, 0.4, plot.results = TRUE)
 split_lines = function(spatial_line,
                       split_length = 500) {
   # The function splits each line of the spatial line object into segments of a given length

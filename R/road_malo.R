@@ -1,4 +1,4 @@
-#' Title
+#' road_malo
 #' @export
 #' @title Road hotspots using Malo method
 #' @name road_malo

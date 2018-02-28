@@ -18,7 +18,8 @@ Imports:
     rgdal,
     MASS,
     sp,
-    rgeos
+    rgeos,
+    shinydashboard
 Depends: maptools
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: testthat

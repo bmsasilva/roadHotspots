@@ -3,8 +3,8 @@ library(roadHotspots)
 
 context("Compute density kernel")
 
-aux <- road_kernel("/home/ubc/DADOS/BRUNO/MyPackges/roadHotspots/inst/extdata/count.csv",
-                   "/home/ubc/DADOS/BRUNO/MyPackges/roadHotspots/inst/extdata/roads.shp")
+aux <- road_kernel("./roadHotspots/inst/extdata/count.csv",
+                   "./roadHotspots/inst/extdata/roads.shp")
 
 pj <- raster::projection(rgdal::readOGR(dsn = "/home/ubc/DADOS/BRUNO/MyPackges/roadHotspots/inst/extdata/", layer = "roads"))
 

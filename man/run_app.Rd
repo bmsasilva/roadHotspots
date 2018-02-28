@@ -15,4 +15,3 @@ Interactive visualization of hotspots
 \author{
 Bruno Silva
 }
-

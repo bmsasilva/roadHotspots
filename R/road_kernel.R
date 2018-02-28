@@ -1,4 +1,4 @@
-#' Title
+#' road_kernel
 #' @export
 #' @title Creates a gaussian density kernel
 #' @name road_kernel

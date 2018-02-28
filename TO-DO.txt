@@ -8,4 +8,4 @@
 - Replace error messages before files have been selected - DONE
 - Create buffer around roads to clip kernel - DONE
 - Create function to clip shapes and keeping the dataframe - DONE
-- Create function to compute Malo method
+- Create function to compute Malo method - DONE

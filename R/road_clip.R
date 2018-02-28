@@ -1,5 +1,4 @@
-#' A Private Function
-#' @export
+#' road_kernel
 #' @title Clips a density kernel to a buffer around linear features
 #' @name road_kernel
 #' @param kernel_shape Density kernel shapefile
