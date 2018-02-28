@@ -27,6 +27,16 @@ shiny::shinyServer(function(input, output, session) {
       )
     road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
   })
+  
+  shape_malo <- shiny::reactive({
+    validate(
+      need(roads_path()$datapath != "",
+           "Please select a shapefile with roads"),
+      need(count_path()$datapath != "",
+           "Please select a file with observed events")
+    )
+    road_malo(count_path()$datapath, roads_path()$datapath, input$thresh)
+  })
 
   bound_box <- shiny::reactive({
     aux <- sp::spTransform(shape_dens(),
@@ -71,14 +81,22 @@ shiny::shinyServer(function(input, output, session) {
   })
 
     output$mymap <- leaflet::renderLeaflet({
-    bias <- sp::spTransform(shape_dens(),
+    kernel <- sp::spTransform(shape_dens(),
                         CRS("+proj=longlat +datum=WGS84 +no_defs"))
+    malo <- sp::spTransform(shape_malo(),
+                              CRS("+proj=longlat +datum=WGS84 +no_defs"))
     leaflet::leaflet() %>%
       leaflet::addProviderTiles(input$map_type) %>%
      # leaflet::addTiles() %>%
-      leaflet::addPolygons(data = bias, group = "layer",
-                  color = c("darkgreen", "yellow", "red"),
-                  stroke = FALSE, fillOpacity = 0.75) 
+      leaflet::addPolygons(data = malo, color = "black", 
+                           group = "malo", opacity = 1)%>%
+      leaflet::addPolygons(data = kernel, group = "kernel",
+                           color = c("darkgreen", "yellow", "red"),
+                           stroke = FALSE, fillOpacity = 0.75) %>%
+      addLayersControl(
+                overlayGroups = c("kernel", "malo"),
+        options = layersControlOptions(collapsed = FALSE)
+      )
     
     })
  })

@@ -21,4 +21,3 @@ import_shp("home/user/data/shapefile.shp")
 \author{
 Bruno Silva
 }
-

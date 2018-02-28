@@ -50,6 +50,15 @@ shiny::shinyUI(
                                                   selected =  500
                                                 )),
                                   shiny::column(3,
+                                  shiny::selectInput(
+                                    "thresh",
+                                    NULL,
+                                    choices = c("90%" = 0.9,
+                                                "95%" = 0.95,
+                                                "99%" = 0.99),
+                                    selected =  0.95
+                                  )),
+                                  shiny::column(3,
                                                 shiny::selectInput(
                                                   "map_type",
                                                   NULL,
