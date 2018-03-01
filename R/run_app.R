@@ -1,6 +1,7 @@
-#' Interactive visualization of hotspots
+#' run_app
 #' @export
 #' @title Interactive visualization of hotspots
+#' @description Shiny app to visualize road hotspots using both malo method and a gaussian density kernel
 #' @name run_app
 #' @return Nothing
 #' @author Bruno Silva

@@ -27,7 +27,7 @@ shiny::shinyServer(function(input, output, session) {
       )
     road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
   })
-  
+
   shape_malo <- shiny::reactive({
     validate(
       need(roads_path()$datapath != "",
@@ -88,8 +88,8 @@ shiny::shinyServer(function(input, output, session) {
     leaflet::leaflet() %>%
       leaflet::addProviderTiles(input$map_type) %>%
      # leaflet::addTiles() %>%
-      leaflet::addPolygons(data = malo, color = "black", 
-                           group = "malo", opacity = 1)%>%
+      leaflet::addPolygons(data = malo, color = "black",
+                           group = "malo", opacity = 1) %>%
       leaflet::addPolygons(data = kernel, group = "kernel",
                            color = c("darkgreen", "yellow", "red"),
                            stroke = FALSE, fillOpacity = 0.75) %>%
@@ -97,6 +97,5 @@ shiny::shinyServer(function(input, output, session) {
                 overlayGroups = c("kernel", "malo"),
         options = layersControlOptions(collapsed = FALSE)
       )
-    
     })
  })

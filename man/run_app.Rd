@@ -10,7 +10,10 @@ run_app()
 Nothing
 }
 \description{
-Interactive visualization of hotspots
+Shiny app to visualize road hotspots using both malo method and a gaussian density kernel
+}
+\details{
+run_app
 }
 \author{
 Bruno Silva

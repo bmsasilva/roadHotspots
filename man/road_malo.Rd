@@ -2,22 +2,32 @@
 % Please edit documentation in R/road_malo.R
 \name{road_malo}
 \alias{road_malo}
-\title{Road hotspots using Malo method}
+\title{Identify hotspots on roads}
 \usage{
-road_malo(count_path, roads_path, thresh = 0.95)
+road_malo (count_path, roads_path, thresh = 0.95, split_length = 500)
 }
 \arguments{
 \item{count_path}{Path for the .csv file with the location of the observations}
 
 \item{roads_path}{Path for the .shp file with the roads}
 
-\item{thresh}{Probability threshold hotspot}
+\item{thresh}{Hotspot probability threshold}
+
+\item{split_length}{Length of the road segments in map units}
 }
 \value{
-a SpatialLinesDataFrame object with the hotspot road segments
+SpatialLinesDataFrame object with the road segments identified as hotspots
 }
 \description{
-Title
+Identify hotspots on roads using an adaptation of Malo et al. (2004) method.
+}
+\details{
+road_malo
+}
+\references{
+Malo, J.E., Suarez, F., Diez, A. (2004) Can we mitigate 
+animal-vehicle accidents using predictive models? 
+J. Appl. Ecol. 41, 701-710 (doi: 10.1111/j.0021-8901.2004.00929.x)
 }
 \author{
 Bruno Silva

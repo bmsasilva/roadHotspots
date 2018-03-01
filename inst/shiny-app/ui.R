@@ -19,83 +19,49 @@ shiny::shinyUI(
                       ))),
       shiny::br(),
       shiny::br(),
-      # shiny::selectInput(
-      #   "bandw",
-      #   NULL,
-      #   choices = c("Bandwidth 500m" = 500,
-      #               "Bandwidth 1000m" = 1000),
-      #   selected =  500
-      # ),
-
       shinydashboard::sidebarMenu(
-        shinydashboard::menuItem("Total", 
-                                 tabName = "Total",
-                                 icon = icon("th")) #,
-        #  menuItem("Espécies", tabName = "Especies", icon = icon("th")) #,
-        # menuItem("Mapa", tabName = "Mapa", icon = icon("th"))
+        shinydashboard::menuItem("Map",
+                                 tabName = "Map",
+                                 icon = icon("th"))
       )
-    ), #final sidebar
+    ),
     shinydashboard::dashboardBody(
-      # Boxes need to be put in a row (or column)
-      # Ver mais icons em: http://fontawesome.io/icons/
       shinydashboard::tabItems(
-        shinydashboard::tabItem(tabName = "Total",
+        shinydashboard::tabItem(tabName = "Map",
                                 shiny::fluidRow(
                                   shiny::column(3,
                                                 shiny::selectInput(
                                                   "bandw",
                                                   NULL,
-                                                  choices = c("Bandwidth 500m" = 500,
-                                                              "Bandwidth 1000m" = 1000),
+                                                  choices = c(
+                                                    "Bandwidth 500m" = 500,
+                                                    "Bandwidth 1000m" = 1000),
                                                   selected =  500
                                                 )),
                                   shiny::column(3,
-                                  shiny::selectInput(
-                                    "thresh",
-                                    NULL,
-                                    choices = c("90%" = 0.9,
-                                                "95%" = 0.95,
-                                                "99%" = 0.99),
-                                    selected =  0.95
-                                  )),
+                                                shiny::selectInput(
+                                                  "thresh",
+                                                  NULL,
+                                                  choices = c("90%" = 0.9,
+                                                              "95%" = 0.95,
+                                                              "99%" = 0.99),
+                                                  selected =  0.95
+                                                )),
                                   shiny::column(3,
                                                 shiny::selectInput(
                                                   "map_type",
                                                   NULL,
-                                                  choices = c("Map" = "OpenStreetMap.BlackAndWhite",
-                                                              "Aerial" = "Esri.WorldImagery",
-                                                              "Topography" = "Esri.WorldTopoMap"),
+                                                  choices = c(
+                                                    "Map" = "OpenStreetMap.BlackAndWhite",
+                                                    "Aerial" = "Esri.WorldImagery",
+                                                    "Topography" = "Esri.WorldTopoMap"),
                                                   selected =  "OpenStreetMap.BlackAndWhite"
                                                 ))
-                                ), # final Fluidrow
-                                shiny::fluidRow(leaflet::leafletOutput("mymap", height = 600))
-                                #fluidRow(dataTableOutput("mortPlot")) # Para despistar erros no mortPlot
-        ),#final tabItem Total
-        
-        shinydashboard::tabItem(tabName = "Especies",
-                                #  h2("Tabela"),
+                                ),
                                 shiny::fluidRow(
-                                  shinydashboard::box(
-                                    width = 6, #Controla o tamanho da caixa da tabela
-                                    shiny::div(shiny::dataTableOutput('especiesTable'), 
-                                               style = "font-size: 12px;")
-                                    #                 ),
-                                    #               box(
-                                    #                 plotOutput("wordcloud")
-                                  )
-                                )
+                                  leaflet::leafletOutput("mymap", height = 600))
         )
-        #,#final tabItem Especies      
-        #tabItem(tabName = "Mapa",
-        #       fluidRow(plotOutput("mapa", height="700px"))
-        # )#final tabItem Mapa
-        
-        
-        
-        
-      ) # final tabItens
-      
-      
-    ) # final body
+      )
+    )
   )
 )

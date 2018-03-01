@@ -2,23 +2,23 @@
 % Please edit documentation in R/lines2df.R
 \name{lines2df}
 \alias{lines2df}
-\title{lines2df}
+\title{SpatialLines to dataframe}
 \usage{
 lines2df(spatial_line)
 }
 \arguments{
 \item{spatial_line}{An object class SpatialLinesDataFrame from the package sp.}
 }
+\value{
+SpatialLinesDataFrame
+}
 \description{
 This function extracts the coordinates of the start and end points of each segment of a Spatial Line and returns a dataframe.
 }
-\examples{
-library("sp","sptools")
-c1 = cbind(c(0,2), c(0,2))
-l1 = Line(c1)
-sl = list(Lines(list(l1), ID = 1))
-lines2df(SpatialLines(sl))
+\details{
+lines2df
 }
 \author{
 Duccio Aiazzi
 }
+\keyword{internal}

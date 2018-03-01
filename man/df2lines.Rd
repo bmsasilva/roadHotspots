@@ -2,7 +2,7 @@
 % Please edit documentation in R/df2lines.R
 \name{df2lines}
 \alias{df2lines}
-\title{df2lines}
+\title{Dataframe to SpatialLines}
 \usage{
 df2lines(linedf)
 }
@@ -14,9 +14,16 @@ fy = coordinates y of the first point of the line,
 tx = coordinates x of the second point of the line,
 tx = coordinates y of the second point of the line.}
 }
+\value{
+SpatialLinesDataFrame
+}
 \description{
-This function converts a dataframe of IDs and coordinates into a SpatialLines object of the package "sp".
+Converts a dataframe of IDs and coordinates into a SpatialLines object of the package "sp".
+}
+\details{
+df2lines
 }
 \author{
 Duccio Aiazzi
 }
+\keyword{internal}

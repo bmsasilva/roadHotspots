@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_shp.R
 \name{import_shp}
 \alias{import_shp}
-\title{Creates a valid dsn and layer name from a .shp filepath}
+\title{Dsn and layer name from .shp filepath}
 \usage{
 import_shp(path)
 }
@@ -11,13 +11,16 @@ import_shp(path)
 }
 \value{
 List with two elements: dsn and layer name
+
+List with two character components: dsn and layer
 }
 \description{
 Creates a valid dsn and layer name from a .shp filepath
 }
-\examples{
-import_shp("home/user/data/shapefile.shp")
+\details{
+import_shp
 }
 \author{
 Bruno Silva
 }
+\keyword{internal}
