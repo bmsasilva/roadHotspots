@@ -25,7 +25,8 @@ shiny::shinyServer(function(input, output, session) {
       need(count_path()$datapath != "",
            "Please select a file with observed events")
       )
-    road_kernel(count_path()$datapath, roads_path()$datapath, input$bandw)
+    road_kernel(as.character(count_path()$datapath), 
+                as.character(roads_path()$datapath), input$bandw)
   })
 
   shape_malo <- shiny::reactive({
@@ -35,7 +36,8 @@ shiny::shinyServer(function(input, output, session) {
       need(count_path()$datapath != "",
            "Please select a file with observed events")
     )
-    road_malo(count_path()$datapath, roads_path()$datapath, input$thresh)
+    road_malo(as.character(count_path()$datapath), 
+              as.character(roads_path()$datapath), input$thresh)
   })
 
   bound_box <- shiny::reactive({

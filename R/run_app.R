@@ -1,8 +1,8 @@
-#' run_app
+#' The app provides a GUI for the functions provided in this package
 #' @export
-#' @title Interactive visualization of hotspots
-#' @description Shiny app to visualize road hotspots using both malo method and a gaussian density kernel
-#' @name run_app
+#' @title Shiny app to visualize road hotspots
+#' @description Shiny app to visualize road hotspots using both malo method 
+#' and a kernel density estimation
 #' @return Nothing
 #' @author Bruno Silva
 run_app <- function() {

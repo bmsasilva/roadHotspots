@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_app.R
 \name{run_app}
 \alias{run_app}
-\title{Interactive visualization of hotspots}
+\title{Shiny app to visualize road hotspots}
 \usage{
 run_app()
 }
@@ -10,10 +10,11 @@ run_app()
 Nothing
 }
 \description{
-Shiny app to visualize road hotspots using both malo method and a gaussian density kernel
+Shiny app to visualize road hotspots using both malo method 
+and a kernel density estimation
 }
 \details{
-run_app
+The app provides a GUI for the functions provided in this package
 }
 \author{
 Bruno Silva

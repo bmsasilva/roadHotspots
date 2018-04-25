@@ -4,9 +4,9 @@ Title: Interactive shiny app to visualize roadkill hotspots
 Version: 0.1.0
 Authors@R: person("Bruno", "Silva", role = c("aut", "cre"),
   	     email = "bmsasilva@gmail.com")
-Description: Interactive shiny app to visualize roadkill hotspots. 
-    Hotspots are calculated using a gaussian kernel and the leaflet library
-    is used to generate the interactive maps.
+Description: Interactive shiny app to visualize road hotspots. 
+    Hotspots are calculated using a gaussian kernel or Malo method, 
+    and the leaflet library is used to generate the interactive maps.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true

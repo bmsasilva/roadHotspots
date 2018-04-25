@@ -7,11 +7,13 @@
 road_malo (count_path, roads_path, thresh = 0.95, split_length = 500)
 }
 \arguments{
-\item{count_path}{Path for the .csv file with the location of the observations}
+\item{count_path}{Path for the .csv file with the location of the observations. 
+The file must have three headed columns (id, x coordinate and y coordinate) 
+with one observation per row. The coordinates must have the same projection as}
 
-\item{roads_path}{Path for the .shp file with the roads}
+\item{roads_path}{Path for the .shp file with the roads. The file must have}
 
-\item{thresh}{Hotspot probability threshold}
+\item{thresh}{Hotspot probability threshold. Can assume values in the range [0, 1]}
 
 \item{split_length}{Length of the road segments in map units}
 }
@@ -22,7 +24,21 @@ SpatialLinesDataFrame object with the road segments identified as hotspots
 Identify hotspots on roads using an adaptation of Malo et al. (2004) method.
 }
 \details{
-road_malo
+The road sections with high observation rates are defined 
+by detecting clusters of animal locations. The spatial pattern of observations is 
+compared with that expected in a random situation. Based on the hypothesis
+that observations for each road section would show a 
+Poisson distribution (Boots & Getis 1988), the probability of any 
+road segment having x number of observations is: p(x) = λx/(x!eλ).
+Hotspots are then defined as those segments whose probability of observations
+is lower than the threshold probability. For instance a 0.95 threshold value 
+means that segments whose number of observations have less than 5% probability
+of ocurrence (1-0.95 = 0.05), given the observations distribution, are considered hotspots
+}
+\examples{
+roads_path <- system.file("extdata/roads.shp", package = "roadHotspots")
+count_path <- system.file("extdata/count.csv", package = "roadHotspots")
+output <- road_malo(count_path, roads_path) 
 }
 \references{
 Malo, J.E., Suarez, F., Diez, A. (2004) Can we mitigate 

@@ -10,8 +10,6 @@ import_shp(path)
 \item{path}{The full path of a .shp file}
 }
 \value{
-List with two elements: dsn and layer name
-
 List with two character components: dsn and layer
 }
 \description{

@@ -2,7 +2,6 @@
 #' @title Dsn and layer name from .shp filepath
 #' @description Creates a valid dsn and layer name from a .shp filepath
 #' @param path The full path of a .shp file
-#' @return List with two elements: dsn and layer name
 #' @usage import_shp(path)
 #' @return List with two character components: dsn and layer
 #' @author Bruno Silva

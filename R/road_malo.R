@@ -11,8 +11,10 @@
 #' @export
 #' @title Identify hotspots on roads
 #' @description Identify hotspots on roads using an adaptation of Malo et al. (2004) method.
-#' @param count_path Path for the .csv file with the location of the observations
-#' @param roads_path Path for the .shp file with the roads
+#' @param count_path Path for the .csv file with the location of the observations. 
+#' The file must have three headed columns (id, x coordinate and y coordinate) 
+#' with one observation per row. The coordinates must have the same projection as 
+#' @param roads_path Path for the .shp file with the roads. The file must have
 #' @param thresh Hotspot probability threshold. Can assume values in the range [0, 1]
 #' @param split_length Length of the road segments in map units
 #' @usage road_malo (count_path, roads_path, thresh = 0.95, split_length = 500)

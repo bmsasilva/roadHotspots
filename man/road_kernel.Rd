@@ -7,7 +7,9 @@
 road_kernel (count_path, roads_path, bandw = 500)
 }
 \arguments{
-\item{count_path}{Path for the .csv file with the location of the observations}
+\item{count_path}{Path for the .csv file with the location of the observations. 
+The file must have three headed columns (id, x coordinate and y coordinate) 
+with one observation per row}
 
 \item{roads_path}{Path for the .shp file with the roads}
 
@@ -24,7 +26,7 @@ from package MASS.
 }
 \details{
 Observations are snaped to closest roads prior to  
-estimation and the resulting kernel is cliped to the road. The kernel 
+estimation and the resulting kernel is clipped to the road. The kernel 
 density estimation is rescaled to [0, 1] and recoded in 
 three categories: 1 = 0.25 to 0.50, 2 = 0.50 to 0.75,
 3 = 0.75 to 1
