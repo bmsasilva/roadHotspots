@@ -8,12 +8,18 @@
 #' @description Kernel density estimation on roads using the function \code{\link[MASS]{kde2d}}
 #' from package MASS.   
 #' @param count_path Path for the .csv file with the location of the observations. 
-#' The file must have three headed columns (id, x coordinate and y coordinate) 
-#' with one observation per row 
+#' The file must have three headed columns (ID, x coordinate and y coordinate) 
+#' with one observation per row. The coordinates must have the same projection as 
+#' the roads shapefile. The header names are indiferent but 
+#' the columns position must be as described.
 #' @param roads_path Path for the .shp file with the roads
 #' @param bandw Vector of bandwidths for x and y directions. 
 #' A scalar value will be taken to apply to both directions.
-#' @usage road_kernel (count_path, roads_path, bandw = 500)
+#' @param group String used to subset species/groups from 
+#' the observations dataframe. Can be a single string or multiple strings. 
+#' For multiple strings use: c("spe1", "spe2"). By default all observations
+#' are used.
+#' @usage road_kernel (count_path, roads_path, bandw = 500, group = "all")
 #' @return A SpatialPolygonsDataFrame object with the kernel 
 #' density estimation
 #' @examples roads_path <- system.file("extdata/roads.shp", package = "roadHotspots")
@@ -22,11 +28,11 @@
 #' @references Venables, W. N. and Ripley, B. D. (2002) Modern Applied 
 #' Statistics with S. Fourth edition. Springer.
 #' @author Bruno Silva
-#' @import maptools
-road_kernel <- function(count_path, roads_path, bandw = 500) {
+road_kernel <- function(count_path, roads_path, bandw = 500, group = "all") {
   shp <- import_shp(roads_path)
   csv <- as.character(count_path)
   samples <- utils::read.csv(csv, header = TRUE)
+  samples <- select_group(samples, group)
 
   lines <- rgdal::readOGR(dsn = shp$dsn, layer = shp$layer)
   proj <- raster::projection(lines)

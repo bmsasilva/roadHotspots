@@ -12,12 +12,18 @@
 #' @title Identify hotspots on roads
 #' @description Identify hotspots on roads using an adaptation of Malo et al. (2004) method.
 #' @param count_path Path for the .csv file with the location of the observations. 
-#' The file must have three headed columns (id, x coordinate and y coordinate) 
+#' The file must have three headed columns (ID, x coordinate and y coordinate) 
 #' with one observation per row. The coordinates must have the same projection as 
+#' the roads shapefile. The header names are indiferent but 
+#' the columns position must be as described.
 #' @param roads_path Path for the .shp file with the roads. The file must have
 #' @param thresh Hotspot probability threshold. Can assume values in the range [0, 1]
 #' @param split_length Length of the road segments in map units
-#' @usage road_malo (count_path, roads_path, thresh = 0.95, split_length = 500)
+#' @param group String used to subset species/groups from 
+#' the observations dataframe. Can be a single string or multiple strings. 
+#' For multiple strings use: c("spe1", "spe2"). By default all observations
+#' are used.
+##' @usage road_malo (count_path, roads_path, thresh = 0.95, split_length = 500, group = "all")
 #' @return SpatialLinesDataFrame object with the road segments identified as hotspots
 #' @examples roads_path <- system.file("extdata/roads.shp", package = "roadHotspots")
 #' count_path <- system.file("extdata/count.csv", package = "roadHotspots")
@@ -27,10 +33,12 @@
 #' J. Appl. Ecol. 41, 701-710 (doi: 10.1111/j.0021-8901.2004.00929.x)
 #' @author Bruno Silva
 road_malo <- function(count_path, roads_path,
-                      thresh = 0.95, split_length = 500){
+                      thresh = 0.95, split_length = 500,
+                      group = "all"){
     shp <- import_shp(roads_path)
     csv <- as.character(count_path)
     samples <- utils::read.csv(csv, header = TRUE)
+    samples <- select_group(samples, group)
   
     lines <- rgdal::readOGR(dsn = shp$dsn, layer = shp$layer)
     proj <- raster::projection(lines)
