@@ -25,9 +25,12 @@ shiny::shinyUI(
         )),
       shiny::fluidRow(
         shiny::column(12,
-                      shinyFiles::selectInput("ID",
-                                                   ## faltam os parametros 
-                                              ## falta o codigo na UI para fazer update automatico
+                      shiny::selectInput(
+                        "ID",
+                        NULL,
+                        choices = c("all" = "all"),
+                        selected =  "all",
+                        multiple = FALSE
                       ))),
       
       shinydashboard::sidebarMenu(

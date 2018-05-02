@@ -72,17 +72,26 @@ shiny::shinyServer(function(input, output, session) {
     }
   )
 
-  ordem <- shiny::reactive({
-    samples <- utils::read.csv(input$file_count, header = TRUE)
-
-    if (input$group == "TOTAL"){
-      out <- c("Todas")
-    } else {
-      samples <- samples[which(samples$Classe %in% input$group), ]
-      out <- c("Todas", as.character(unique(samples$Ordem)))
-    }
-    out
+  groups <- shiny::reactive({
+    if(!is.null(input$file_count)){
+  samples <- utils::read.csv(as.character(count_path()$datapath), header = TRUE)
+output <- c("all", unique(as.character(samples[[1]])))
+    } else{
+      output <- "all"
+}
+output
   })
+  
+  
+  
+  
+  
+  
+   observe({ 
+     updateSelectInput(session, "ID",
+                       choices = groups(),
+                       selected =  "all"
+     )})
 
     output$mymap <- leaflet::renderLeaflet({
     kernel <- sp::spTransform(shape_dens(),

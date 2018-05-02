@@ -21,6 +21,6 @@ Imports:
     sp,
     rgeos,
     shinydashboard
-Depends: R (≥ 3.4.4), maptools
+Depends: R (>= 3.4.4), maptools
 RoxygenNote: 6.0.1
 Suggests: testthat
