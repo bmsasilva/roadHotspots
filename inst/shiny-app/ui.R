@@ -19,6 +19,17 @@ shiny::shinyUI(
                       ))),
       shiny::br(),
       shiny::br(),
+      
+      shiny::fluidRow(
+        shiny::column(12, "Choose species/groups"
+        )),
+      shiny::fluidRow(
+        shiny::column(12,
+                      shinyFiles::selectInput("ID",
+                                                   ## faltam os parametros 
+                                              ## falta o codigo na UI para fazer update automatico
+                      ))),
+      
       shinydashboard::sidebarMenu(
         shinydashboard::menuItem("Map",
                                  tabName = "Map",

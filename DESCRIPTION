@@ -1,12 +1,13 @@
 Package: roadHotspots
 Type: Package
-Title: Interactive shiny app to visualize roadkill hotspots
+Title: Interactive shiny app to visualize road hotspots
 Version: 0.1.0
 Authors@R: person("Bruno", "Silva", role = c("aut", "cre"),
   	     email = "bmsasilva@gmail.com")
 Description: Interactive shiny app to visualize road hotspots. 
-    Hotspots are calculated using a gaussian kernel or Malo method, 
-    and the leaflet library is used to generate the interactive maps.
+    Hotspots are calculated using a gaussian kernel density estimation 
+    or Malo et al. method (2004). After loading the package 
+    use run_app() to start the shiny app.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
@@ -20,6 +21,6 @@ Imports:
     sp,
     rgeos,
     shinydashboard
-Depends: maptools
+Depends: R (≥ 3.4.4), maptools
 RoxygenNote: 6.0.1
 Suggests: testthat

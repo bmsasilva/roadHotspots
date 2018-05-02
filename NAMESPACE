@@ -3,4 +3,4 @@
 export(road_kernel)
 export(road_malo)
 export(run_app)
-import(maptools)
+importFrom(magrittr,"%>%")
