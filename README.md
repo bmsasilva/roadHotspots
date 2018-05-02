@@ -1,7 +1,12 @@
-# roadHotspots: Shiny app and functions to compute a gaussian density kernel over linear features (eg. roads) for a set of observations (eg. animal crossings, roadkills)
+# roadHotspots: A Shiny app to visualize hotspots over linear features (eg. roads) for a set of observations (eg. animal crossings, roadkills)
 
 You can install the roadHotspots package from github with:
 ``` r
-install.packages("devtools")
+# install.packages("devtools")
 devtools::install_github("bmsasilva/roadHotspots")
+```
+To start the app run:
+``` r
+library(roadHotspots)
+run_app()
 ```
