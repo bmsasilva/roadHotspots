@@ -4,18 +4,25 @@
 \alias{road_malo}
 \title{Identify hotspots on roads}
 \usage{
-road_malo (count_path, roads_path, thresh = 0.95, split_length = 500)
+road_malo (count_path, roads_path, thresh = 0.95, split_length = 500, group = "all")
 }
 \arguments{
 \item{count_path}{Path for the .csv file with the location of the observations. 
-The file must have three headed columns (id, x coordinate and y coordinate) 
-with one observation per row. The coordinates must have the same projection as}
+The file must have three headed columns (ID, x coordinate and y coordinate) 
+with one observation per row. The coordinates must have the same projection as 
+the roads shapefile. The header names are indiferent but 
+the columns position must be as described.}
 
 \item{roads_path}{Path for the .shp file with the roads. The file must have}
 
 \item{thresh}{Hotspot probability threshold. Can assume values in the range [0, 1]}
 
 \item{split_length}{Length of the road segments in map units}
+
+\item{group}{String used to subset species/groups from 
+the observations dataframe. Can be a single string or multiple strings. 
+For multiple strings use: c("spe1", "spe2"). By default all observations
+are used.}
 }
 \value{
 SpatialLinesDataFrame object with the road segments identified as hotspots

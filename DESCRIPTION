@@ -8,7 +8,7 @@ Description: Interactive shiny app to visualize road hotspots.
     Hotspots are calculated using a gaussian kernel density estimation 
     or Malo et al. method (2004). After loading the package 
     use run_app() to start the shiny app.
-License: GPL-2
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:

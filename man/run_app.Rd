@@ -10,8 +10,8 @@ run_app()
 Nothing
 }
 \description{
-Shiny app to visualize road hotspots using both malo method 
-and a kernel density estimation
+Shiny app to visualize road hotspots using Malo's method 
+or a gaussian kernel density estimation
 }
 \details{
 The app provides a GUI for the functions provided in this package

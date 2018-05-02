@@ -4,17 +4,24 @@
 \alias{road_kernel}
 \title{Kernel density estimation on roads}
 \usage{
-road_kernel (count_path, roads_path, bandw = 500)
+road_kernel (count_path, roads_path, bandw = 500, group = "all")
 }
 \arguments{
 \item{count_path}{Path for the .csv file with the location of the observations. 
-The file must have three headed columns (id, x coordinate and y coordinate) 
-with one observation per row}
+The file must have three headed columns (ID, x coordinate and y coordinate) 
+with one observation per row. The coordinates must have the same projection as 
+the roads shapefile. The header names are indiferent but 
+the columns position must be as described.}
 
 \item{roads_path}{Path for the .shp file with the roads}
 
 \item{bandw}{Vector of bandwidths for x and y directions. 
 A scalar value will be taken to apply to both directions.}
+
+\item{group}{String used to subset species/groups from 
+the observations dataframe. Can be a single string or multiple strings. 
+For multiple strings use: c("spe1", "spe2"). By default all observations
+are used.}
 }
 \value{
 A SpatialPolygonsDataFrame object with the kernel 
