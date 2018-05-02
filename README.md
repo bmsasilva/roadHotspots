@@ -3,6 +3,7 @@
 You can install the roadHotspots package from github with:
 ``` r
 # install.packages("devtools")
+library(devtools)
 devtools::install_github("bmsasilva/roadHotspots")
 ```
 To start the app run:
