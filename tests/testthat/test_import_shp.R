@@ -4,7 +4,7 @@ library(roadHotspots)
 context("Convert shapefile fullpath to file name and folder")
 
 unix <- import_shp("home/user/file.shp")
-win <- import_shp("c:\\home\\user\\file.shp")
+win <- import_shp("C:/Users/file.shp")
 
  test_that("unix - import_shp returns a list of 2", {
    expect_output(str(unix), "List of 2")

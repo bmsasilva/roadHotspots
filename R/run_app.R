@@ -5,7 +5,7 @@
 #' or a gaussian kernel density estimation
 #' @return Nothing
 #' @author Bruno Silva
-#' @importFrom magrittr "%>%"
+#' @importFrom leaflet "%>%"
 run_app <- function() {
   app_dir <- system.file("shiny-app", package = "roadHotspots")
   if (app_dir == "") {
