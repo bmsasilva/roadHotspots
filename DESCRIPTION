@@ -12,7 +12,6 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
-    leaflet,
     shiny,
     shinyFiles,
     raster,
@@ -21,6 +20,6 @@ Imports:
     sp,
     rgeos,
     shinydashboard
-Depends: R (>= 3.4.4), maptools
+Depends: R (>= 3.4.4), maptools, leaflet
 RoxygenNote: 6.0.1
 Suggests: testthat

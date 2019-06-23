@@ -69,7 +69,7 @@ shiny::shinyUI(
                                                     "Map" = "OpenStreetMap.BlackAndWhite",
                                                     "Aerial" = "Esri.WorldImagery",
                                                     "Topography" = "Esri.WorldTopoMap"),
-                                                  selected =  "OpenStreetMap.BlackAndWhite"
+                                                  selected =  "Esri.WorldTopoMap"
                                                 ))
                                 ),
                                 shiny::fluidRow(
